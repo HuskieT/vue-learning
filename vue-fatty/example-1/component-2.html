@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>component-2 props Demo</title>
+</head>
+<body>
+    <h1>component-2 props Demo</h1>
+    <hr>
+    <!--
+    	我们在写属性时经常会加入’-‘来进行分词，比如：，那这时我们在props里如果写成props:[‘form-here’]是错误的，
+    	我们必须用小驼峰式写法props:[‘formHere’]。
+    	
+    	vue不支持js中 “-”的写法 可以使用小驼峰的写法
+    	例：fromHere （可以）  from-here （vue不支持）
+    	fromHere替换下文中的here
+    -->
+    <div id="app">
+        
+        <helloworld :here="message"></helloworld>
+         <chris v-bind:fromHere="tt"></chris>
+    </div>
+
+    <script type="text/javascript">
+        
+        var helloworld = { 
+            template:`<div>my here is {{here}}.</div>`,
+            props:['here']
+            
+        }
+    	var chris = {
+    		template:`<div>chris here is {{here}}.</div>`,
+    		  props:['fromHere']
+    	}
+        var app=new Vue({
+            el:'#app',
+            data:{
+                message:'USA',
+                tt:"lin"
+            },
+            components:{
+                "helloworld":helloworld,
+                "chris":chris,
+            }
+            /*或者这种写法
+             components:{
+                "panda":{
+                    template:`<div style="color:red;">Panda from {{ here }}.</div>`,
+                    props:['here']
+                }
+            }
+             * */
+        })
+    </script>
+</body>
+</html>

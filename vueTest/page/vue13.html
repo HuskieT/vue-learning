@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<html>
+
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="..css/style.css" />
+		<script src="../js/vue.js" rel="stylesheet"></script>
+	</head>
+
+	<body>
+		<div id="m13">
+			<h1 v-show="result">任天堂新一代主机Switch</h1>
+			<button @click="btnClick">显示按钮</button>
+		</div>
+		<script>
+			var m13 = new Vue({
+				el: '#m13',
+				data: {
+					result: true
+				},
+				methods: {
+					btnClick: function() {
+						this.result = !this.result;
+					},
+				},
+			});
+		</script>
+		<div id="m14">
+			<ul>
+				<li v-for="(game, index) in games">({{index+1}}) {{game.title}} / 售价：{{game.price}}元</li>
+			</ul>
+		</div>
+		<script>
+			var m14 = new Vue({
+				el: '#m14',
+				data: {
+					games: [{
+							title: "勇者斗恶龙",
+							price: 500
+						},
+						{
+							title: "库跑卡丁车",
+							price: 400
+						},
+						{
+							title: "马里奥世界",
+							price: 550
+						},
+					]
+				},
+			});
+		</script>
+		<div id="m16">
+			<h1>JS对象迭代</h1>
+			<div v-for="(value, key) in mygame">
+				{{ key }} : {{ value }}
+			</div>
+		</div>
+		<script>
+			var m16 = new Vue({
+				el: '#m16',
+				data: {
+					mygame: {
+						title: "乌贼娘2代",
+						price: 350,
+						pubdate: "2017年夏季",
+						category: "射击",
+						agerange: "全年龄",
+					},
+				},
+			});
+		</script>
+		<div id="mm9">
+			<h1>事件处理器</h1>
+			<input id="txtName" v-on:keyup="txtKeyup($event)">
+			<button id="btnOK" v-on:click="btnClick($event)">OK</button>
+		</div>
+		<script>
+			var m17 = new Vue({
+				el: '#mm9',
+				data: {},
+				methods: {
+					txtKeyup: function(event) {
+						this.debugLog(event);
+					},
+					btnClick: function(event) {
+						this.debugLog(event);
+					},
+					debugLog: function(event) {
+						console.log(
+							event.srcElement.tagName,
+							event.srcElement.id,
+							event.srcElement.innerHTML,
+							event.key ? event.key : ""
+						);
+					},
+				},
+			});
+		</script>
+		<div id="myApp">
+			<h1>表单控件绑定</h1>
+			<input type="text" v-model="message" placeholder="来呀，编辑我吧！">
+			<p>Message is: {{ message }}</p>
+			<textarea v-model="message" placeholder="加入多行编辑" rows="8" cols="34"></textarea>
+		</div>
+		<script>
+			var myApp = new Vue({
+				el: '#myApp',
+				data: {
+					message: "我爱马里奥",
+				},
+				methods: {},
+			});
+		</script>
+		<div id="awefe">
+			<h1>表单复选框</h1>
+			<input type="checkbox" id="生化危机7" value="生化危机7" v-model="checkedGames">
+			<label for="生化危机7">生化危机7</label>
+			<input type="checkbox" id="模拟飞行" value="模拟飞行" v-model="checkedGames">
+			<label for="模拟飞行">模拟飞行</label>
+			<input type="checkbox" id="塞尔达传说" value="塞尔达传说" v-model="checkedGames">
+			<label for="塞尔达传说">塞尔达传说</label>
+			<br>
+			<p>您选择的游戏是: {{ checkedGames }}</p>
+		</div>
+		<script>
+			var awefe = new Vue({
+				el: '#awefe',
+				data: {
+					checkedGames: []
+				},
+				methods: {},
+			});
+		</script>
+		<div id="mm20">
+			<h1>表单单选按钮</h1>
+
+			<h3>选择性别</h3>
+			<input type="radio" id="male" value="男" v-model="pickedSex">
+			<label for="male">男</label>
+			<br>
+			<input type="radio" id="female" value="女" v-model="pickedSex">
+			<label for="female">女</label>
+
+			<h3>选择爱好</h3>
+			<input type="radio" id="game" value="玩游戏" v-model="pickedHobby">
+			<label for="game">玩游戏</label>
+			<br>
+			<input type="radio" id="movie" value="看电影" v-model="pickedHobby">
+			<label for="movie">看电影</label>
+
+			<h3>选择结果</h3>
+			<p>性别: {{ pickedSex }}</p>
+			<p>爱好: {{ pickedHobby }}</p>
+
+		</div>
+		<script>
+			var m20 = new Vue({
+				el: '#mm20',
+				data: {
+					pickedSex: "",
+					pickedHobby: "",
+				},
+				methods: {},
+			});
+		</script>
+	</body>
+
+	</html>

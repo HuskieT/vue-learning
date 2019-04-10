@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型链</title>
+</head>
+<body>
+<!--prototype与__proto__
+    prototype 是函数才有的属性（例：var b = function(){}   b才有prototype属性）
+    __proto__ 是每个对象都有的属性
+
+    原型链的详细解释见: https://www.cnblogs.com/libin-1/p/5820550.html
+-->
+<script type="text/javascript">
+    var a = {};
+    console.log(a.prototype);  //undefined
+    console.log(a.__proto__);  //Object {}
+
+    var b = function(){}
+    console.log(b.prototype);  //b {}
+    console.log(b.__proto__);  //function() {}
+
+</script>
+</body>
+</html>

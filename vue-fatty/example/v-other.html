@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>v-pre & v-cloak & v-once 案例</title>
+</head>
+<body>
+    <h1>v-pre & v-cloak & v-once 案例</h1>
+    <hr>
+    <!--
+    	作者：lin1209120@163.com
+    	时间：2018-08-30
+    	描述：
+    	v-pre就不会输出vue中的data值；v-pre 显示原样输出值
+    	在vue渲染完指定的整个DOM后才进行显示
+    	在第一次DOM时进行渲染，渲染完成后视为静态内容，跳出以后的渲染过程
+    -->
+    <div id="app">
+        <div v-pre>{{message}}</div>
+        <div v-cloak>渲染完成后，才显示！</div>
+        <div v-once>第一次绑定的值：{{message}}</div>
+        <div><input type="text" v-model="message"></div>
+    </div>
+    <style>
+        [v-cloak]{
+            display:none;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var app=new Vue({
+            el:'#app',
+            data:{
+                message:'hello Vue!'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<html>
+
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="..css/style.css" />
+		<script src="../js/vue.js" rel="stylesheet"></script>
+	</head>
+
+	<body>
+		<div id="mm21">
+			<h3>你最喜欢的NBA球星是：</h3>
+			<select v-model="likedNBAStar" style="width:210px;">
+				<option>科比</option>
+				<option>詹姆斯</option>
+				<option>哈登</option>
+				<option>库里</option>
+				<option>杜兰特</option>
+			</select>
+
+			<h3>我的全明星：</h3>
+			<select v-model="likedNBAStars" multiple style="width:210px;height:210px;">
+				<option>阿德托昆博</option>
+				<option>怀特赛德</option>
+				<option>阿尔德里奇</option>
+				<option>戴维斯</option>
+				<option>格里芬</option>
+				<option>詹姆斯</option>
+				<option>杜兰特</option>
+				<option>巴特勒</option>
+				<option>德罗赞</option>
+				<option>哈登</option>
+				<option>科比</option>
+				<option>韦德</option>
+				<option>伦纳德</option>
+				<option>库里</option>
+				<option>欧文</option>
+				<option>保罗</option>
+				<option>林树豪</option>
+			</select>
+
+			<h3>选择结果</h3>
+			<p>我最最喜欢: {{ likedNBAStar }}</p>
+			<p>我的全明星: {{ likedNBAStars }}</p>
+
+		</div>
+		<script>
+			var m21 = new Vue({
+				el: '#mm21',
+				data: {
+					likedNBAStar: null,
+					likedNBAStars: [],
+				},
+				methods: {},
+			});
+		</script>
+		<div id="mm22">
+			<h1>用户注册</h1>
+
+			<div>
+				<label for="username">用户：</label>
+				<input type="text" id="username" v-model.lazy="username" @change="checkUsername">
+				<span v-if="checkUsernameOK==1">可注册</span>
+				<span v-else-if="checkUsernameOK==2">用户名已存在</span>
+				<span v-else></span>
+			</div>
+			<div>
+				<label for="age">年龄：</label>
+				<input type="number" id="age" v-model.number="age">
+			</div>
+			<div>
+				<label for="content">个人简介：</label><br/>
+				<textarea id="content" v-model.trim="content" cols="55" rows="8"></textarea>
+			</div>
+
+			<h4>信息区</h4>
+			<p>{{username}}</p>
+			<p>{{age}}</p>
+			<p><pre>{{content}}</pre></p>
+		</div>
+		<script>
+			var m22 = new Vue({
+				el: '#mm22',
+				data: {
+					username: "",
+					checkUsernameOK: 3,
+					age: "",
+					content: "",
+				},
+				methods: {
+					checkUsername: function() {
+						if(this.username.length > 2) {
+							this.checkUsernameOK = 1;
+						} else if(0 < this.username.length < 2) {
+							this.checkUsernameOK = 2;
+						} else {
+							this.checkUsernameOK = 3;
+						}
+					},
+				},
+			});
+		</script>
+		<div id="mm23">
+			<today-weather></today-weather>
+		</div>
+		<script>
+			Vue.component('today-weather', {
+				template: '<div>今天下雨，出不去啦，干什么呢？看Youtube吧!</div>'
+			});
+			var m23 = new Vue({
+				el: '#mm23',
+			});
+		</script>
+		<div id="mm24">
+			<my-weather></my-weather>
+		</div>
+		<script>
+			var WeatherComponent = {
+				template: '<div>今天下雨，随它去吧！</div>'
+			};
+			var m24 = new Vue({
+				el: '#mm24',
+				data: {},
+				components: {
+					'my-weather': WeatherComponent
+				},
+			});
+		</script>
+		<div id="mm25">
+			<h1>2017年最期待的游戏是：</h1>
+			<table border="1">
+				<tr>
+					<td>编号</td>
+					<td>游戏名称</td>
+				</tr>
+				<tr is="my-row1"></tr>
+				<tr is="my-row2"></tr>
+				<tr is="my-row3"></tr>
+
+			</table>
+		</div>
+		<script>
+			Vue.component('my-row1', {
+				template: '<tr><td>(1)</td><td>塞尔达传说:荒野之息(3/3)</td></tr>'
+			});
+			Vue.component('my-row2', {
+				template: '<tr><td>(2)</td><td>新马里奥赛车(4/28)</td></tr>'
+			});
+			Vue.component('my-row3', {
+				template: '<tr><td>(3)</td><td>喷射乌贼娘2代</td></tr>'
+			});
+			var myApp = new Vue({
+				el: '#mm25',
+				data: {},
+				methods: {},
+			});
+		</script>
+		<div id="mm26">
+			<div>今天的天气是
+				<today-weather/>
+			</div>
+		</div>
+		<script>
+			Vue.component('today-weather', {
+				template: '<strong>{{todayWeather}}</strong>',
+				data: function() {
+					return {
+						todayWeather: '雨加雪'
+					};
+				}
+			});
+			var mm26 = new Vue({
+				el: '#mm26',
+			});
+		</script>
+	</body>
+
+	</html>

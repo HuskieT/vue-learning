@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<html>
+
+	<head>
+		<title>组件基础</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="..css/style.css" />
+		<script src="../js/vue.js"></script>
+	</head>
+
+	<body>
+		<!--
+		 组件必须先注册以便 Vue 能够识别。这里有两种组件的注册类型：全局注册和局部注册
+		 全局注册的组件可以用在其被注册之后的任何 (通过 new Vue) 新创建的 Vue 根实例，也包括其组件树中的所有子组件的模板中
+		 -->
+
+		<div id="components-demo">
+			<button-counter></button-counter>
+		</div>
+		<script>
+			// 定义一个名为 button-counter 的新组件
+			Vue.component('button-counter', {
+				data: function() {
+					return {
+						count: 0
+					}
+				},
+				template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+			})
+			new Vue({
+				el: '#components-demo',
+				data: {
+					count: 3
+				}
+
+			})
+		</script>
+		<div id="components-demo1">
+			<chris-opt v-for="item in posts" v-bind:key="item.id" v-bind:item="item"></chris-opt>
+		</div>
+		<script>
+			Vue.component('chris-opt', {
+				props: ['item'],
+				template: '<div> <h3>{{ item.title }}</h3> </div>'
+			})
+			new Vue({
+				el: '#components-demo1',
+				data: {
+					posts: [{
+							id: 1,
+							title: 'sss'
+						},
+						{
+							id: 2,
+							title: '2353'
+						},
+						{
+							id: 3,
+							title: 'wege'
+						},
+					]
+				}
+
+			})
+		</script>
+
+		<div id="components-demo2">
+			<p>5555555555555</p>
+			<blog-post v-for="post in posts" v-bind:key="post.id"></blog-post>
+
+		</div>
+		<script>
+			new Vue({
+				el: '#components-demo2',
+				data: {
+					posts: [{
+							id: 1,
+							title: 'sss'
+						},
+						{
+							id: 2,
+							title: '2353'
+						},
+						{
+							id: 3,
+							title: 'wege'
+						},
+					]
+				},
+				components: {
+					'blog-post': {
+						props: ['post'],
+						template :'<li>{{ post.id }}</li>'
+					}
+				}
+
+			})
+		</script>
+	</body>
+
+	</html>

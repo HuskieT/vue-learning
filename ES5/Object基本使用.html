@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object的基本使用方法</title>
+    <!---->
+</head>
+<body>
+<!--[1].Object.assign(target,source1,source2,...)
+    该方法主要用于对象的合并，将源对象source的所有可枚举属性合并到目标对象target上,此方法只拷贝源对象的自身属性，不拷贝继承的属性。
+    Object.assign只能进行值的复制，如果要复制的值是一个取值函数，那么将求值后再复制。
+    Object.assign可以用来处理数组，但是会把数组视为对象。
+-->
+<script type="text/javascript">
+
+    const target = {
+        x : 0,
+        y : 1
+    };
+    const source = {
+        x : 1,
+        z : 2 ,
+        fn : {
+            number : 1
+        }
+    };
+    Object.assign(target, source);
+    // target  {x : 1, y : 1, z : 2, fn : {number : 1}}    // 同名属性会被覆盖
+    // source  {x : 1, z : 2, fn : {number : 1}}
+    target.fn.number = 2;
+    // source  {x : 1, z : 2, fn : {number : 2}}
+
+
+    function Person(){
+        this.name = 1
+    }
+    Person.prototype.country = 'china';
+    let student = new Person();
+    student.age = 29 ;
+    const young = {insterst : 'sport'};
+    Object.assign(young,student);
+    // young {instest : 'sport' , age : 29}               // 只能拷贝自身的属性，不能拷贝prototype
+
+    var tui = [1, 2, 3];
+    Object.assign(tui, [4, 5])  ;                    // 把数组当作对象来处理
+    console.log(tui);// [4, 5, 3]
+</script>
+
+<!--[2] Object.create(prototype[,propertiesObject]) 使用指定的原型对象及其属性去创建一个新的对象
+-->
+<script type="text/javascript">
+    var parent = {
+        x : 1,
+        y : 1
+    };
+    var child = Object.create(parent,{
+        z : {                           // z会成为创建对象的属性
+            writable:true,
+            configurable:true,
+            value: "newAdd"
+        }
+    });
+    console.log(child)
+</script>
+<!--[3]Object.keys(obj) 返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和使用-->
+<script type="text/javascript">
+    let arr = ["a", "b", "c"];
+    console.log(Object.keys(arr));
+    // ['0', '1', '2']
+
+    /* Object 对象 */
+    let obj = { foo: "bar", baz: 42 },
+        keys = Object.keys(obj);
+    console.log(keys);
+    // ["foo","baz"]
+</script>
+
+
+<!--[4]Object.values(obj) 方法返回一个给定对象自己的所有可枚举属性值的数组-->
+<script type="text/javascript">
+    //Object.values会过滤属性名为 Symbol 值的属性。
+    var an_obj = { 100: 'a', 2: 'b', 7: 'c' };
+    console.log(Object.values(an_obj)); // ['b', 'c', 'a']
+
+    var obj_ds = { 0: 'a', 1: 'b', 2: 'c' };
+    console.log(Object.values(obj_ds)); // ['a', 'b', 'c']
+</script>
+
+<!--[5]Object.entries() 返回一个给定对象自身可枚举属性的键值对数组-->
+<script type="text/javascript">
+    const obj_oi = { foo: 'bar', baz: 42 };
+    console.log(Object.entries(obj_oi)); // [ ['foo', 'bar'], ['baz', 42] ]
+
+    const simuArray = { 0: 'a', 1: 'b', 2: 'c' };
+    console.log(typeof Object.entries(simuArray)); // [ ['0', 'a'], ['1', 'b'], ['2', 'c'] ]
+</script>
+<!--[6] hasOwnProperty()  判断对象自身属性中是否具有指定的属性。
+obj.hasOwnProperty('name')
+-->
+<!--[7]Object.getPrototypeOf() 返回指定对象的原型（内部[[Prototype]]属性的值，即__proto__，而非对象的prototype）。
+       Object.setPrototypeOf(obj,prototype) 设置对象的原型对象->
+<!--[8]Object.freeze() 冻结一个对象，冻结指的是不能向这个对象添加新的属性，不能修改其已有属性的值，不能删除已有属性，
+以及不能修改该对象已有属性的可枚举性、可配置性、可写性。也就是说，这个对象永远是不可变的。该方法返回被冻结的对象。
+
+Object.isFrozen() 判断一个对象是否被冻结 .
+-->
+<script type="text/javascript">
+    var obj = {
+        prop: function() {},
+        foo: 'bar'
+    };
+
+    // 新的属性会被添加, 已存在的属性可能
+    // 会被修改或移除
+    obj.foo = 'baz';
+    obj.lumpy = 'woof';
+    delete obj.prop;
+
+    // 作为参数传递的对象与返回的对象都被冻结
+    // 所以不必保存返回的对象（因为两个对象全等）
+    var o = Object.freeze(obj);
+
+    o === obj; // true
+    Object.isFrozen(obj); // === true
+
+    // 现在任何改变都会失效
+    obj.foo = 'quux'; // 静默地不做任何事
+    // 静默地不添加此属性
+    obj.quaxxor = 'the friendly duck';
+    console.log(obj)
+</script>
+
+<!--[9] Object.preventExtensions() 对象不能再添加新的属性。可修改，删除现有属性，不能添加新属性。
+Object.isExtensible() Object.isExtensible()
+-->
+<!--[10]Object.seal()
+Object.seal() 方法可以让一个对象密封，并返回被密封后的对象。(与freeze不同就是可以修改属性的值)
+密封一个对象会让这个对象变的不能添加新属性，且所有已有属性会变的不可配置。属性不可配置的效果就是属性变的不可删除，
+以及一个数据属性不能被重新定义成为访问器属性，或者反之。但属性的值仍然可以修改。尝试删除一个密封对象的属性或者将某个密封对象的属性从数据属性转换成访问器属性，
+结果会静默失败或抛出TypeError 异常. 不会影响从原型链上继承的属性。但 __proto__ (  ) 属性的值也会不能修改。
+
+Object.isSealed()
+判断一个对象是否被密封
+-->
+</body>
+</html>

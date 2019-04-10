@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>扩展运算符和rest运算符</title>
+</head>
+<body>
+<!--
+对象扩展运算符（…）： 当编写一个方法时，我们允许它传入的参数是不确定的。这时候可以使用对象扩展运算符来作参数
+
+-->
+<script type="text/javascript">
+    //此种方式导致 arr1 被污染
+    let arr1=['www','jspang','com'];
+    let arr2=arr1;
+    console.log(arr2);
+    arr2.push('shengHongYu');
+    console.log(arr1);
+</script>
+<script type="text/javascript">
+    function jspang(...arg){
+        console.log(arg[0]);
+        console.log(arg[1]);
+        console.log(arg[2]);
+        console.log(arg[3]);
+    }
+    jspang(1,2,3);
+
+    let arr1=['www','jspang','com'];
+    //let arr2=arr1;
+    let arr2=[...arr1];
+    console.log(arr2);
+    arr2.push('shengHongYu');
+    console.log(arr2);
+    console.log(arr1);
+</script>
+
+<script type="text/javascript">
+ //ES6 引入 rest 参数（形式为...变量名），用于获取函数的多余参数，这样就不需要使用arguments对象了
+ function jspang(first,...arg){
+     for(let val of arg){
+         console.log(val);
+     }
+ }
+ jspang(0,1,2,3,4,5,6,7);
+</script>
+
+</body>
+</html>

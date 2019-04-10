@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<html>
+
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="..css/style.css" />
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="test1">
+			<h4>{{ message.split('').reverse().join('') }}</h4>
+			<h3>{{ fullName }}</h3>
+			<todo-item   v-for='item in list'       v-bind:todo='item'  :key='item.id' ></todo-item>
+		</div>
+		<script>
+			Vue.component('todo-item',{
+				props:['todo'],
+				template:'<li>{{todo.text }}</li>',
+			})
+			
+			var test1 = new Vue({
+				el: '#test1',
+				data:{
+					message: 'abcdefg',
+					list:[
+						{id:0,text:'包菜'},
+						{id:1,text:'束带结发'},
+						{id:2,text:'3他'},
+					]
+				},
+				computed:{
+					//默认情况下次方法就是gett方法 ,一般默认没有sett方法 但是可以自己添加
+					fullName: {
+						get:function(){
+							return this.message +'55'
+						},
+						set:function(val){
+							return val+'5555'
+						}
+						
+					}
+				},
+			})
+		</script>
+		<div id="test2">
+			<h4>{{ mess }}</h4>
+			<h3>{{ message_next }}</h3>
+			<h3>{{ message_watch }}</h3>
+			
+		</div>
+		<script>
+			var vm = new Vue({
+				el:'#test2',
+				data:{
+					mess :'1231231',
+					bb: 'ddd',
+					message_watch : '0',
+					
+				},
+				computed:{
+					//默认情况下次方法就是gett方法 ,一般默认没有sett方法 但是可以自己添加
+					message_next:function(){
+						//这里this指的是vm对象
+						return  this.mess+'4555'
+					},
+				},
+				watch:{
+					mess:function(){
+						this.message_watch = this.bb +'4555'
+					}
+				},
+			})
+		</script>
+		<div id="test3">
+			<p class="static" v-bind:class="{active: isActive,'text-danger':hasError}">第一种写法</p>
+			<p v-bind:class="objClass">第二种写法</p>
+			<p v-bind:class="objClass3">第三种写法</p>
+		</div>
+		<script>
+			var test3 = new Vue({
+				el:'#test3',
+				data:{
+					isActive :true,
+					hasError: true,
+					objClass : {
+						active :true,
+						'text-danger': false
+					}
+				},
+				computed:{
+					objClass3:function(){
+						return {
+							active : true,
+							'text-danger': true
+						}
+					}
+				}
+			})	
+		</script>	
+		<div id="test4">
+			<p v-bind:class="[acts,rrb]">数组语法一</p>
+			<p v-bind:class="[{active: isActive},rrb]">数组语法二</p>
+		</div>
+		<script>
+			var test4 = new Vue({
+				el:'#test4',
+				data:{
+					acts:'active',
+					rrb:'text-danger'
+				}
+			})
+		</script>
+		<div id="test5">
+			<my-row1 class="cl1 cl2"></my-row1>
+		</div>
+		<script>
+			Vue.component('my-row1',{
+				template:"<h2 class='cl5 cl4'>4545454</h2>"
+			})
+			var test5 = new Vue({
+				el:'#test5',
+				data:{
+				
+				}
+			})
+		</script>	
+		
+	</body>
+</html>

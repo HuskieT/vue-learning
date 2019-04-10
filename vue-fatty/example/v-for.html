@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="../assets/js/vue.js"></script>
+		<title>V-for 案例</title>
+	</head>
+
+	<body>
+		<h1>v-for指令用法</h1>
+		<hr>
+		<div id="app">
+			<ul>
+				<li v-for="item in items">
+					{{item}}
+				</li>
+			</ul>
+			<ul>
+				<li v-for="(student,index) in students">
+					{{index}}:{{student.name}} - {{student.age}}
+				</li>
+			</ul>
+		</div>
+		<!--vue低版本中 data里面的items和computed里面可以一样，但是高版本，是不允许相同名称。有很多小伙伴踩到了这个坑，
+		这里提醒学习的小伙伴，根据自己版本的不同，请修改代码-->
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					items: [20, 23, 18, 65, 32, 19, 54, 56, 41],
+					students: [{
+							name: 'jspang',
+							age: 32
+						},
+						{
+							name: 'Panda',
+							age: 30
+						},
+						{
+							name: 'PanPaN',
+							age: 21
+						},
+						{
+							name: 'King',
+							age: 45
+						}
+					]
+				},
+					
+				computed: {
+					sortItems: function() {
+						return this.items.sort(sortNumber);
+					},
+					sortStudent: function() {
+						return sortByKey(this.students, 'age');
+					}
+				},
+
+			});
+		
+			function sortNumber(a, b) {
+				return a - b;
+			}
+			//数组对象方法排序:
+			function sortByKey(array, key) {
+				return array.sort(function(a, b) {
+					var x = a[key];
+					var y = b[key];
+					return((x < y) ? -1 : ((x > y) ? 1 : 0));
+				});
+			}
+		</script>
+	</body>
+
+</html>

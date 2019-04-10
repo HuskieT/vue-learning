@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<html>
+
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="..css/style.css" />
+		<script src="../js/vue.js" rel="stylesheet"></script>
+	</head>
+
+	<body>
+		<div id="app07">
+			<p>{{message}}</p>
+			<p>{{message | toupper }}</p>
+			<hr>
+			<p>现在的vue.js学习进度是{{num}}({{num | topercentage}})。</p>
+		</div>
+		<div id="app08">
+			今年3月3日发卖的任天堂新一代主机Switch的价格是：{{price}}円，含税价格为：{{priceInTax}}円，折合人民币为：{{priceChinaRMB}}元。
+		</div>
+		<div id="app09">
+			<p>今年3月3日发卖的任天堂新一代主机Switch的价格是：{{price}}円，含税价格为：{{priceInTax}}円，折合人民币为：{{priceChinaRMB}}元。</p>
+			<button @click="btnClick(10000)">加价10000円</button>
+		</div>
+		<div id="app10">
+			<p>今px4的价格是：{{price}}円，含税价格为：{{priceInTax}}円，折合人民币为：{{priceChinaRMB}}元。</p>
+			<button @click="btnClick(10800)">把含税改价为10800円</button>
+		</div>
+		<script>
+			var m07 = new Vue({
+				el: '#app07',
+				data: {
+					message: 'hello vue.js world.',
+					num: 0.3
+				},
+				//格式化变量内容的输出。（日期格式化，字母大小写，数字再计算等等）
+				filters: {
+					toupper: function(value) {
+						return value.toUpperCase();
+					},
+					topercentage: function(value) {
+						return value * 100 + '%';
+					},
+				}
+			});
+			//处理元数据， 便于进行二次利用。（ 比如： 消费税自动计算功能）
+			var m08 = new Vue({
+				el: '#app08',
+				data: {
+					price: 2566,
+				},
+				computed: {
+					priceInTax: function() {
+						return this.price * 1.08;
+					},
+					priceChinaRMB: function() {
+						return Math.round(this.priceInTax / 16.75);
+					},
+				}
+			})
+
+			var m09 = new Vue({
+				el: '#app09',
+				data: {
+					price: 0,
+					priceInTax: 0,
+					priceChinaRMB: 0,
+				},
+				watch: {
+					price: function() {
+						this.priceInTax = Math.round(this.price * 1.08);
+						this.priceChinaRMB = Math.round(this.priceInTax / 16.75);
+					}
+				},
+				methods: {
+					btnClick: function(newPrice) {
+						this.price += newPrice;
+					}
+				}
+
+			})
+			m09.price = 1200;
+			var m10 = new Vue({
+				el: '#app10',
+				data: {
+					price: 1999,
+				},
+				computed: {
+					priceInTax: {
+						get: function() {
+							return this.price * 1.08;
+						},
+						set: function(value) {
+							this.price = value / 1.08;
+						}
+					},
+					priceChinaRMB: function() {
+						return Math.round(this.priceInTax / 16.75);
+					}
+				},
+				methods: {
+					btnClick: function(newPrice) {
+						this.priceInTax = newPrice;
+					}
+				}
+			})
+		</script>
+
+		<div id="app11">
+			<div v-bind:class="{active:isActive}">红色文本1</div>
+			<div :class="{active:isActive}">红色文本2</div>
+
+			<div :class="myClass">红色文本</div>
+			<button @click="btnClick">改变class吧</button>
+			<button @click="bbq">bq</button>
+		</div>
+		<script>
+			var m10 = new Vue({
+				el: '#app11',
+				data: {
+					isActive: true,
+					myClass: {
+						isActive: true,
+						big: true,
+					}
+				},
+				methods: {
+					btnClick: function() {
+						this.isActive = !this.isActive;
+					},
+					bbq: function() {
+						this.myClass.active = !this.myClass.active;
+						this.myClass.big = !this.myClass.big;
+					}
+				}
+			})
+		</script>
+		<div id="myApp">
+			<h1 v-if="result == 0">成绩未公布</h1>
+			<h1 v-else-if="result < 60">{{result}}分 - 考试不及格</h1>
+			<h1 v-else-if="result < 80">{{result}}分 - 还需努力</h1>
+			<h1 v-else>{{result}}分 - 考得不错，玩游戏吧！</h1>
+			<button @click="btnClick">考试成绩</button>
+		</div>
+		<script>
+			var myApp = new Vue({
+				el: '#myApp',
+				data: {
+					result: 0
+				},
+				methods: {
+					btnClick: function() {
+						this.result = Math.round(Math.random() * 100);
+					},
+				},
+			});
+		</script>
+	</body>
+
+	</html>

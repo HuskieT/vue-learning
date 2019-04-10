@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>vue.extend-扩展实例构造器</title>
+</head>
+<body>
+    <h1>vue.extend-扩展实例构造器</h1>
+    <hr>
+    <div id="author"></div>
+    <chris-author></chris-author>
+    <!--
+        Vue 的$mount()为手动挂载，在项目中可用于延时挂载（例如在挂载之前要进行一些其他操作、判断等），
+       	之后要手动挂载上。new Vue时，el和$mount并没有本质上的不同
+       -->
+    <script type="text/javascript">
+       var authorExtend = Vue.extend({
+           template:"<p><a :href='authorUrl'>{{authorName}}</a></p>",
+           data:function(){
+               return{
+                   authorName:'chris',
+                   authorUrl:'http://www.jspang.com'
+               }
+           }
+       });
+       
+       new authorExtend().$mount('#author');
+        new authorExtend().$mount('chris-author');
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<html>
+
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="..css/style.css" />
+		<script src="../js/vue.js"></script>
+	</head>
+	<body>
+		
+		
+		<div id="mm01" :title="title">
+			<p>{{ message }}</p>
+		</div>
+		<div id="myApp">
+			<h3>游戏列表</h3>
+			<!-- Virtual DOM -->
+			<div v-if="seen">2017最新发卖</div>
+			<ol>
+				<li v-for="game in games">{{game.title}} / {{game.price}}元</li>
+			</ol>
+		</div>
+		<div id="bangding">
+			<p>双向帮点：{{mygame}}</p>
+			<input v-model="mygame" />
+		</div>
+		<div id="mm05">
+			<p>您最喜欢的游戏是：{{mygame}}</p>
+			<button v-on:click="btnClick('我的世界')">我的世界</button>
+			<button v-on:click="btnClick('勇者斗恶龙')">勇者斗恶龙</button>
+			<button v-on:click="btnClick('塞尔达传说')">塞尔达传说</button>
+			<button @click="btnClick('魔界战记5')">魔界战记5</button>
+		</div>
+
+		<script>
+			var mm01 = new Vue({
+				el: "#mm01",
+				data: {
+					message: 'hello vue' + new Date().toLocaleDateString(),
+					title : "悬停看到标题"
+				}
+			});
+			var m03 = new Vue({
+				el: '#myApp',
+				data: {
+					seen: true,
+					games: [{
+							title: '勇者斗恶龙',
+							price: 400
+						},
+						{
+							title: '超级马里奥',
+							price: 380
+						},
+						{
+							title: '我的世界',
+							price: 99
+						}
+					]
+				}
+			})
+			m03.games.push({title:'BBQ','price':1000});
+			var m04 = new Vue({
+				el: '#bangding',
+				data: {
+					mygame: '超级马里奥'
+				}
+			})
+			var mm05 = new Vue({
+				el: '#mm05',
+				data: {
+					mygame: 'LOL',
+					btnClick: function(pname) {
+						this.mygame = pname;
+					}
+				}
+			})
+		</script>
+		<div id="mm06">
+			<ol>
+				<game-item v-for="item in games" v-bind:game="item"></game-item>
+			</ol>
+		</div>
+		<script>
+			/* 组件定义：game-item */
+			Vue.component('game-item', {
+				props: ['game'],
+				template: '<li>{{ game.title }}</li>'
+			});
+			/* Vue对象实例化 */
+			var mm06 = new Vue({
+				el: '#mm06',
+				data: {
+					games: [{
+							title: '斗地主'
+						},
+						{
+							title: '打麻雀'
+						},
+						{
+							title: 'UNO'
+						}
+					]
+				}
+			})
+		</script>
+	</body>
+
+</html>

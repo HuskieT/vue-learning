@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <title>Vue.set 全局操作</title>
+</head>
+<body>
+    <h1>Vue.set 全局操作</h1>
+    <hr>
+    <div id="app">
+        <ul>
+            <li v-for=" aa in arr">{{aa}}</li>
+        </ul>
+    </div>
+    <button onclick="add()">外部添加</button>
+    <!--
+    	作者：lin1209120@163.com
+    	时间：2018-08-30
+    	界面是不会自动跟新数组的，我们需要用Vue.set(app.arr,1,’ddd’)来设置改变，
+    	vue才会给我们自动更新，这就是Vue.set存在的意义。
+    	
+    	在虚拟dom通过下标改变数组是通过赋值的方式是无法改变的（vue限制不能使用这种方法改变数组的值）；
+    	可以通过vue.set 进行处理
+    -->
+    <script type="text/javascript">
+        function add(){
+            console.log("我已经执行了");
+           //app.arr[1]='ddd';//此方式书写无法实现
+           Vue.set(app.arr,1,'ddd');
+        }
+        var outData={
+            arr:['aaa','bbb','ccc']
+        };
+        var app=new Vue({
+            el:'#app',
+            data:outData
+        })
+    </script>
+</body>
+</html>

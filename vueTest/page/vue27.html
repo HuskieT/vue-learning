@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<html>
+
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="..css/style.css" />
+		<script src="../js/vue.js" rel="stylesheet"></script>
+	</head>
+
+	<body>
+		<div id="mm27">
+			<h1>您的成绩评价</h1>
+			<test-result :score="50"></test-result>
+			<test-result :score="65"></test-result>
+			<test-result :score="90"></test-result>
+			<test-result :score="100"></test-result>
+		</div>
+		<script>
+			Vue.component('test-result', {
+				props: ['score'],
+				template: '<div><strong>{{score}}分，{{testResult}}</strong></div>',
+				computed: {
+					testResult: function() {
+						var strResult = "";
+						if(this.score < 60)
+							strResult = "不及格";
+						else if(this.score < 90)
+							strResult = "中等生";
+						else if(this.score <= 100)
+							strResult = "优秀生";
+						return strResult;
+					}
+				}
+			});
+			var mm27 = new Vue({
+				el: '#mm27',
+			});
+		</script>
+		<div id="mm28">
+			<div>请输入您的名字：<input v-model="myname"></div>
+			<hr/>
+			<say-hello :pname="myname" />
+		</div>
+		<script>
+			Vue.component('say-hello', {
+				props: ['pname'],
+				template: '<div>你好，<strong>{{pname}}</strong>！</div>',
+			});
+			var mm28 = new Vue({
+				el: '#mm28',
+				data: {
+					myname: 'Koma'
+				}
+			});
+		</script>
+		<div id="mm29">
+			<h1>身世之谜</h1>
+			<show-member-info name="koma" :age="25" ></show-member-info>
+		</div>
+		<script>
+			Vue.component('show-member-info', {
+				props: {
+					name: {
+						type: String,
+						required: true,
+					},
+					age: {
+						type: Number,
+						validator: function(value) {
+							return value >= 0 && value <= 130;
+						}
+					},
+					detail: {
+						type: Object,
+						default: function() {
+							return {
+								address: 'US',
+								language: 'English',
+							};
+						}
+					},
+				},
+				template: '<div>姓名：{{this.name}}<br/>' +
+					'年龄：{{this.age}}岁<br/>' +
+					'地址：{{this.detail.address}}<br/>' +
+					'语言：{{this.detail.language}} </div>',
+			});
+			var mm29 = new Vue({
+				el: '#mm29',
+			});
+		</script>
+		<div id="mm30">
+			<h1>人生加法</h1>
+			<add-method :a="6" :b="12" v-on:add_event="getAddResult"></add-method>
+			<hr/>
+			<h3>{{result}}</h3>
+		</div>
+		<script>
+			Vue.component('add-method', {
+				props: ['a', 'b'],
+				template: '<div><button v-on:click="add">加吧</button></div>',
+				methods: {
+					add: function() {
+						var value = 0;
+						value = this.a + this.b;
+						this.$emit('add_event', {
+							result: value
+						});
+					}
+				},
+			});
+			var mm30 = new Vue({
+				el: '#mm30',
+				data: {
+					result: 0
+				},
+				methods: {
+					getAddResult: function(pval) {
+						this.result = pval.result;
+					}
+				},
+			});
+		</script>
+		<div id="mm31">
+			<say-to pname="koma">
+				你的视频做的太差了。
+			</say-to>
+			<say-to pname="mike">
+				你千万不要学koma。
+			</say-to>
+			<say-to pname="john">
+				你教教他们两个吧。
+			</say-to>
+		</div>
+		<script>
+			Vue.component('say-to', {
+				props: ['pname'],
+				template: '<div>' +
+					'你好，<strong>{{pname}}</strong>！' +
+					'<slot></slot>' +
+					'</div>',
+			});
+			var mm31 = new Vue({
+				el: '#mm31',
+			});
+		</script>
+		<div id="mm32">
+			<nba-all-stars c="奥尼尔" pf="加内特">
+				<span slot="sf">皮尔斯</span>
+				<span slot="sg">雷阿伦</span>
+				<span slot="pg">隆多</span>
+			</nba-all-stars>
+		</div>
+		<script>
+			Vue.component('nba-all-stars', {
+				props: ['c', 'pf'],
+				template: '<div>' +
+					'<div>中锋：{{c}}</div>' +
+					'<div>大前：{{pf}}</div>' +
+					'<div>小前：<slot name="sf"></slot></div>' +
+					'<div>分卫：<slot name="sg"></slot></div>' +
+					'<div>控卫：<slot name="pg"></slot></div>' +
+					'</div>',
+			});
+			var mm32 = new Vue({
+				el: '#mm32',
+			});
+		</script>
+	</body>
+
+	</html>

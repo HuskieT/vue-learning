@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<html>
+
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="..css/style.css" />
+		<script src="../js/vue.js"></script>
+	</head>
+
+	<body>
+
+		<body>
+			<div id="test1">
+				<b v-bind:style="{color:activeColor, fontSize:fontSize + 'px'}">5555</b>
+			</div>
+			<script>
+				var test1 = new Vue({
+					el: "#test1",
+					data: {
+						activeColor: 'red',
+						fontSize: 30
+					}
+				})
+			</script>
+			<div id="test2">
+				<b v-bind:style="styleObject">5555</b>
+			</div>
+			<script>
+				//直接绑定一个样式对象
+				var test2 = new Vue({
+					el: "#test2",
+					data: {
+						styleObject: {
+							color: 'blue',
+							fontSize: '60px'
+						}
+
+					}
+				})
+			</script>
+			<div id="test3">
+				<template v-if="loginType">
+					<label>Username</label>
+					<input placeholder="sss your username" key="username-input">
+				</template>
+				<template v-else>
+					<label>email</label>
+					<input placeholder="your email" key="email-input">
+				</template>
+			</div>
+			<script>
+				//条件渲染
+				var test3 = new Vue({
+					el: "#test3",
+					data: {
+						loginType: false
+					}
+				})
+			</script>
+			<div id="test4">
+				<ul v-for="item in items">
+					<li>{{ item }}</li>
+				</ul>
+				<ul v-for="item in nubmss">
+					<li>{{ item }}</li>
+				</ul>
+			</div>
+			<script>
+				//
+				var test4 = new Vue({
+					el: "#test4",
+					data: {
+						items: ['a', 'b', 'c'],
+						numbers: [1, 2, 3, 4, 5]
+					},
+					computed: {
+						nubmss: function() {
+							return this.nubmss.filter(function() {
+								return numbers % 2 === 0
+							})
+						}
+					}
+
+				})
+				/* 错误示范*/
+				test4.items[1] = 'sss',
+					test4.items.length = 5,
+					/* 正确示范*/
+					Vue.set(test4.items, 6, 'bbb'),
+					test4.items.splice(5)
+			</script>
+			<div id="test5">
+				<ul v-if="todos.length>3">
+					<li v-for="todo in todos">
+						{{todo}}
+					</li>
+				</ul>
+			</div>
+			<script>
+				//v-if 置于外层  在v-for之前
+				var test5 = new Vue({
+					el: "#test5",
+					data: {
+						todos: [1, 2, 3, 1, 4, 1]
+					}
+				})
+			</script>
+			<div id="test6">
+				<form v-on:submit.prevent="addNewTodo">
+					<label for="new-todo">Add a todo</label>
+					<input v-model="newTodoText" id="new-todo" placeholder="E.g. Feed the cat">
+					<button>Add</button>
+				</form>
+				<ul>
+					<li is="todo-item" v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title" v-on:remove="todos.splice(index, 1)"></li>
+				</ul>
+			</div>
+			<script>
+				Vue.component('todo-item', {
+					template: '\
+						    <li>\
+						      {{ title }}\
+						      <button v-on:click="$emit(\'remove\')">Remove</button>\
+						    </li>\
+						  ',
+					props: ['title']
+				})
+
+				new Vue({
+					el: '#test6',
+					data: {
+						newTodoText: '',
+						todos: [{
+								id: 1,
+								title: 'Do the dishes',
+							},
+							{
+								id: 2,
+								title: 'Take out the trash',
+							},
+							{
+								id: 3,
+								title: 'Mow the lawn'
+							}
+						],
+						nextTodoId: 4
+					},
+					methods: {
+						addNewTodo: function() {
+							this.todos.push({
+								id: this.nextTodoId++,
+								title: this.newTodoText
+							})
+							this.newTodoText = ''
+						}
+					}
+				})
+			</script>
+		</body>
+
+	</html>

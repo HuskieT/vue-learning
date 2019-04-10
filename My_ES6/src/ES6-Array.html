@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6 数组</title>
+</head>
+<body>
+<!-- [1]array  find( )方法:需要传入一个匿名函数，函数需要传入三个参数
+    value：表示当前查找的值。
+    index：表示当前查找的数组索引。
+    arr：表示当前数组。
+    [2] fill()也是一个实例方法，它的作用是把数组进行填充，它接收三个参数，第一个参数是填充的变量，第二个是开始填充的位置，第三个是填充到的位置。
+-->
+<script type="text/javascript">
+    //Array.from(xxx)来进行转换。我们把上边的JSON代码转换成数组
+    let  json = {
+        '0': 'jspang',
+        '1': '技术胖',
+        '2': '大胖逼逼叨',
+        length:3
+    };
+    let arr=Array.from(json);
+    console.log(typeof arr)
+    //
+    let arrbio =Array.of(3,4,5,"jks",52.65);
+    console.log(arrbio);
+    //array  find( )方法 ；所谓的实例方法就是并不是以Array对象开始的，而是必须有一个已经存在的数组，然后使用的方法，这就是实例方法
+    let ssarr=[1,2,3,4,5,6,7,8,9];
+    console.log(ssarr.find(function(value,index,ssarr){
+        return value > 5;
+    }));
+    //fill( )实例 数组进行填充
+    let arrYi=[0,1,2,3,4,5,6,7,8,9];
+    arrYi.fill('jspang',2,5);
+    console.log(arrYi);
+    // for of 循环
+    let forarr=['jspang','技术胖','大胖逼逼叨'];
+    for (let item of forarr){
+        console.log(item);
+    }
+    for (let [index,val] of forarr.entries()){
+        console.log(index+':'+val);
+    }
+    //entries( )实例方法 entries()实例方式生成的是Iterator形式的数组，那这种形式的好处就是可以让我们在需要时用next()手动跳转到下一个值
+    let arrlist=['jspang','技术胖','大胖逼逼叨']
+    let list=arrlist.entries();
+    console.log(list);
+    console.log(list.next().value);
+
+</script>
+</body>
+</html>
