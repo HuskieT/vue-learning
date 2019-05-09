@@ -11,6 +11,7 @@
 	</head>
 	<body>
 		<div id="test1">
+			<!--reverse() 倒置-->
 			<h4>{{ message.split('').reverse().join('') }}</h4>
 			<h3>{{ fullName }}</h3>
 			<todo-item   v-for='item in list'       v-bind:todo='item'  :key='item.id' ></todo-item>
@@ -20,7 +21,7 @@
 				props:['todo'],
 				template:'<li>{{todo.text }}</li>',
 			})
-			
+
 			var test1 = new Vue({
 				el: '#test1',
 				data:{
@@ -40,7 +41,7 @@
 						set:function(val){
 							return val+'5555'
 						}
-						
+
 					}
 				},
 			})
@@ -49,7 +50,7 @@
 			<h4>{{ mess }}</h4>
 			<h3>{{ message_next }}</h3>
 			<h3>{{ message_watch }}</h3>
-			
+
 		</div>
 		<script>
 			var vm = new Vue({
@@ -58,7 +59,7 @@
 					mess :'1231231',
 					bb: 'ddd',
 					message_watch : '0',
-					
+
 				},
 				computed:{
 					//默认情况下次方法就是gett方法 ,一般默认没有sett方法 但是可以自己添加
@@ -98,8 +99,8 @@
 						}
 					}
 				}
-			})	
-		</script>	
+			})
+		</script>
 		<div id="test4">
 			<p v-bind:class="[acts,rrb]">数组语法一</p>
 			<p v-bind:class="[{active: isActive},rrb]">数组语法二</p>
@@ -123,10 +124,10 @@
 			var test5 = new Vue({
 				el:'#test5',
 				data:{
-				
+
 				}
 			})
-		</script>	
-		
+		</script>
+
 	</body>
 </html>
