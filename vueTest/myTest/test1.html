@@ -14,6 +14,8 @@
 			<!--reverse() 倒置-->
 			<h4>{{ message.split('').reverse().join('') }}</h4>
 			<h3>{{ fullName }}</h3>
+			<h3 style="color:red">{{ testName }}</h3>
+
 			<todo-item   v-for='item in list'       v-bind:todo='item'  :key='item.id' ></todo-item>
 		</div>
 		<script>
@@ -42,7 +44,16 @@
 							return val+'5555'
 						}
 
+					},
+					testName:{
+						get:function () {
+							return this.message+'test'
+						},
+						set:function () {
+							return val +'test'
+						}
 					}
+
 				},
 			})
 		</script>
@@ -76,9 +87,9 @@
 			})
 		</script>
 		<div id="test3">
-			<p class="static" v-bind:class="{active: isActive,'text-danger':hasError}">第一种写法</p>
-			<p v-bind:class="objClass">第二种写法</p>
-			<p v-bind:class="objClass3">第三种写法</p>
+			<p class="static" :class="{active: isActive,'text-danger':hasError}">第一种写法</p>
+			<p :class="objClass">第二种写法</p>
+			<p :class="objClass3">第三种写法</p>
 		</div>
 		<script>
 			var test3 = new Vue({
@@ -102,8 +113,8 @@
 			})
 		</script>
 		<div id="test4">
-			<p v-bind:class="[acts,rrb]">数组语法一</p>
-			<p v-bind:class="[{active: isActive},rrb]">数组语法二</p>
+			<p :class="[acts,rrb]">数组语法一</p>
+			<p :class="[{active: isActive},rrb]">数组语法二</p>
 		</div>
 		<script>
 			var test4 = new Vue({
