@@ -29,10 +29,13 @@
         setTimeout(resolve, ms);
       })
     }
+
     
     async function asyncPrint(value, ms) {
+      let result = await Promise.resolve('success')
+      console.log(result)
       console.log('函数执行', new Date().toTimeString());
-      await timeout(ms);
+      await timeout(ms); //登台ms毫秒后继续执行
       console.log('延时时间', new Date().toTimeString());
       console.log(value);
     }

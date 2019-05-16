@@ -14,7 +14,7 @@
 
 		<body>
 			<div id="test1">
-				<b v-bind:style="{color:activeColor, fontSize:fontSize + 'px'}">5555</b>
+				<b :style="{color:activeColor, fontSize:fontSize + 'px'}">5555</b>
 			</div>
 			<script>
 				var test1 = new Vue({
@@ -26,7 +26,7 @@
 				})
 			</script>
 			<div id="test2">
-				<b v-bind:style="styleObject">5555</b>
+				<b :style="styleObject">5555</b>
 			</div>
 			<script>
 				//直接绑定一个样式对象
@@ -109,13 +109,13 @@
 				})
 			</script>
 			<div id="test6">
-				<form v-on:submit.prevent="addNewTodo">
+				<form :submit.prevent="addNewTodo">
 					<label for="new-todo">Add a todo</label>
 					<input v-model="newTodoText" id="new-todo" placeholder="E.g. Feed the cat">
 					<button>Add</button>
 				</form>
 				<ul>
-					<li is="todo-item" v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title" v-on:remove="todos.splice(index, 1)"></li>
+					<li is="todo-item" v-for="(todo, index) in todos" :key="todo.id" :title="todo.title" @remove="todos.splice(index, 1)"></li>
 				</ul>
 			</div>
 			<script>

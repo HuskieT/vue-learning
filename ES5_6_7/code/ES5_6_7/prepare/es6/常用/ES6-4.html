@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串模版</title>
+</head>
+<body>
+<!---->
+<script type="text/javascript">
+    let chris='chrislin';
+    let blog = `非常高兴你能看到这篇文章，我是你的老朋友${chris}。这节课我们学习字符串模版。`;
+    document.write(blog);
+    //对html的支持
+    let blogNew = `<br/><b>非常高兴你能看到这篇文章</b>，我是你的老朋友${chris}。<br/>这节课我们学习字符串模版。`;
+    document.write(blogNew);
+    //运算的支持
+    let a=1;
+    let b=2;
+    let result=`${a+b}`;
+    document.write(result);
+    //判断是否存在
+    let str = '非常高兴你能看到这篇文章，我是你的老朋友chrislin。这节课我们学习字符串模版。';
+    document.write(str.includes(chris));
+
+    console.log('jspang|'.repeat(3));//jspang|jspang|jspang|
+</script>
+</body>
+</html>

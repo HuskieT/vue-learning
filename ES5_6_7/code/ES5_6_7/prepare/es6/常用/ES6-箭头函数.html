@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数</title>
+</head>
+<body>
+<button>测试1</button>
+<br>
+<button>测试2</button>
+<br>
+<button>测试3</button>
+<br>
+
+用let取代var是趋势
+-->
+<script type="text/javascript">
+    // 下面三种写法 表达意思相同
+    let foo = function(){
+        console.log('1111'+this)
+    }
+    function fan (){
+        console.log('222'+this)
+    }
+    let fbn = () => {
+        console.log('333'+this)
+    }
+
+    foo();
+    fan();
+    fbn();
+</script>
+
+</body>
+</html>

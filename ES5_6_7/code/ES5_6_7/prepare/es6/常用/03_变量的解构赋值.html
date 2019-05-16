@@ -19,18 +19,22 @@
     let obj = {name : 'kobe', age : 39};
 //    let name = obj.name;
 //    let age = obj.age;
-//    console.log(name, age);
+    let {name,age} = obj
+   console.log(name, age);
     //对象的解构赋值
-    let {age} = obj;
+    // let {age} = obj;
     console.log(age);
 //    let {name, age} = {name : 'kobe', age : 39};
 //    console.log(name, age);
 
     //3. 数组的解构赋值  不经常用
-    let arr = ['abc', 23, true];
+    let arr = ['abc', 23, true,11];
     let [a, b, c, d] = arr;
     console.log(a, b, c, d);
-    //console.log(e);
+    // 中括号内只起到占位作用 相当于下标
+    let [, , x, y] = arr;
+    console.log( x, y);
+
     function person(p) {//不用解构赋值
         console.log(p.name, p.age);
     }
