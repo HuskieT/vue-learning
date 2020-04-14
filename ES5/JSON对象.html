@@ -37,10 +37,10 @@
         console.log("******结果类型*******"+ typeof result.b);
         console.log("******结果*******"+result.b);
 
-        var str = {"name":"菜鸟教程", "site":"https://www.runoob.com"}
+        var str = {"name":"菜鸟教程", "site":"https://www.runoob.com","test":13}
         var luckyNums = JSON.stringify(str, function(key, value) {
-            if (value == 13) {
-                return undefined;
+            if (key == "test") {
+                return 22222;
             } else {
                 return value;
             }

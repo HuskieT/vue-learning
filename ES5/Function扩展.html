@@ -16,7 +16,9 @@
 <script type="text/javascript">
     //call()/apply()的用法一：获取数组中的最大值和最小值，利用他们扩充作用域拥有Math的min和max方法
     var  numbers = [5, 458 , 120 , -215 ];
+    // 直接从第二个参数开始，依次传入
     var  maxInNumbers = Math.max.apply(Math, numbers),   //458
+        // 第二个参数必须是数组。传入放入数组中
         maxInNumbers = Math.max.call(Math,5, 458 , 120 , -215); //458
 
 </script>
@@ -28,6 +30,8 @@
         console.log('dddddddddddddd');
     }
     var obj = {};
+  
+
     fun.bind(obj, 12)();
     console.log(obj.name, obj.age);
 
