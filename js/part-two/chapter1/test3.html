@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<body>
+    <script>
+        function identify() {
+            return this.name.toUpperCase()
+        }
+        function speak() {
+            var greeting = "Hello I'm "+identify().call(this);
+            console.log(greeting);
+        }
+        var me = {
+            name:"key"
+        }
+        var you = {
+            name: "reader"
+        }
+        identify().call(me);// KEY
+        identify().call(you);//READER
+        speak().call(me);//hello 我是KEY
+        speak().call(you);//hello 我是READER
+    </script>
+</body>
+</html>

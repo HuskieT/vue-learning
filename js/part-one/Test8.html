@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        <!--下面两种写法结果是相同的 -->
+        var foo = (function CoolMoudel() { //IIFE 立即执行函数
+            var ob1 = "cool";
+            var ob2 = [1,2,3];
+            function doSomething() {
+                console.log(ob1);
+            }
+            function doAnother() {
+                console.log(ob2);
+            }
+            return {
+                methA:doSomething,
+                methB:doAnother
+            }
+        })();
+        foo.methA();
+        foo.methB();
+    </script>
+    <script>
+        function CoolMoudel() {
+            var ob1 = "cool";
+            var ob2 = [1,2,3];
+            function doSomething() {
+                console.log(ob1);
+            }
+            function doAnother() {
+                console.log(ob2);
+            }
+            return {
+                methA:doSomething,
+                methB:doAnother
+            }
+        };
+        var foo =  CoolMoudel();
+        foo.methA();
+        foo.methB();
+    </script>
+    <script>
+        //模块也是普通函数 可以传值
+        function CoolMoudel3(id) {
+            function iden() {
+                console.log(id);
+            }
+            return {
+                test3:iden,
+            }
+        };
+        var ssld =  CoolMoudel3("test33");
+        ssld.test3();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

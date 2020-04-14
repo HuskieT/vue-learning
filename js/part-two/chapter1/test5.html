@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body><
+    <script>
+        var a = 6;
+        function foo() {
+            console.log(this.a);
+        }
+        var tr = {
+            a:26,
+            fn:foo
+        }
+        var td = {
+            a:78,
+            obj:tr
+        }
+        tr.fn(); //结果 26
+        foo(); // 结果 6
+        td.obj.fn(); //26
+    </script>
+</body>
+</html>

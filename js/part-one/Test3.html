@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+
+    for (var i = 0; i <5 ; i++) {
+        console.log(i);
+    }
+    //i 已经污染了全局作用域 结果为5
+    console.log("window var :"+i);//5
+</script>
+<script>
+    // for (let i = 0; i <5 ; i++) {
+    //     console.log(i);
+    // }
+    // //结果会报错  let 可以防止污染全局作用域
+    // console.log("window let :"+i);
+</script>
+<script>
+    let k ;
+    for (k = 0; i <5 ; i++) {
+        let j = i;
+        console.log(j);
+    }
+</script>
+
+<body>
+
+</body>
+</html>

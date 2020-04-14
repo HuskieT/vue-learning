@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var foo = (function cool(id) {
+            function change() {
+                publicAPI.identify                                                                                                      = iden2;
+            }
+            function iden1() {
+                console.log(id)
+            }
+            function iden2() {
+                console.log(id.toUpperCase());
+            }
+            var publicAPI = {
+                change: change,
+                identify:iden1
+            }
+            return publicAPI;
+        })("foo moudel");
+
+        foo.identify();
+        foo.change();
+        foo.identify();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function foo() {
+            "use strict"
+            var a = 3;
+            console.log(this.a); //严格模式下结果是 undefined ，普通模式结果为5
+        }
+        var a = 5 ;
+        foo();
+    </script>
+    <script>
+        function foo() {
+            var a = 3;
+            console.log(this.a);//结果是 5
+        }
+        var a = 5 ;
+        (function () {
+            "use strict"
+            foo();
+        })();
+    </script>
+</body>
+</html>

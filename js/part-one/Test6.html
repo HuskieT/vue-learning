@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--闭包的使用-->
+    <script>
+        function foo() {
+            var a = 2;
+            function bar() {
+                console.log(a);
+            }
+            return bar;
+        }
+        var baz = foo();
+        baz();
+    </script>
+
+    <script>
+        function  ct() {
+            var b = 2;
+            function tq() {
+                console.log(b);
+            }
+            tqq(tq);
+        }
+        function tqq(fn) {
+            fn();
+        }
+        ct();
+    </script>
+    <script>
+        var err;
+        function ctr() {
+            var u =6;
+            function ggc() {
+                console.log(u);
+            }
+            err = ggc;
+        }
+        function jkd() {
+            err();
+        }
+        ctr();
+        jkd();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

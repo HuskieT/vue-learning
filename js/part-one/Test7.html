@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        for (let i =0; i <=5 ; i++) {
+            setTimeout(function timer() {
+                console.log(i);//输出结果是0到5 每秒一个
+            },i*1000);
+        }
+        for (var i =0; i <=5 ; i++) {
+            setTimeout(function timer() {
+                console.log(i);//输出结果是 6个6
+            },i*1000);
+        }
+    </script>
+
+    <!--<script>-->
+        <!--for (var i = 0; i <6 ; i++) {-->
+            <!--(function () {-->
+                <!--var j = i;-->
+                <!--setTimeout(function  ti() {-->
+                    <!--console.log(j);-->
+                <!--},j*1000);-->
+            <!--})();-->
+        <!--}-->
+    <!--</script>-->
+    <script>
+        for (var i = 0; i <=5 ; i++) {
+            (function (j) {
+                setTimeout(function  ti() {
+                    console.log(j);
+                },j*1000);
+            })(i);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

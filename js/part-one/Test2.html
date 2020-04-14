@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    //for（）循环 i 有被污染的风险
+    function bar(a) {
+        i= 6 ;
+        console.log(a+i);
+    }
+    for (var i =0;i<10;i++){
+        bar(i*2);
+    }
+</script>
+<body>
+
+</body>
+</html>
