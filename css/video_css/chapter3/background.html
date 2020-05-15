@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>背景1</title>
+    <style>
+        /*
+        background: -webkit-linear-gradient(left, red, green)（旧写法）
+        background: linear-gradient(to right, red, green) （标准写法）  （从左往右 ，红色变为绿色）
+        background:  linear-gradient(180deg, red, green)  （带角度的写法 （默认0度从下到上，45度左下角到右下角,90度是从左到右，135左上角到右下角,180度从上到下））
+
+        transparent 透明
+        */
+        body{
+            background:white;
+        }
+        .c1{
+            height:90px;
+            /*background:rgba(255,0,0, .3);*/
+            /*background:hsla(240,50%,50%,0.5);*/
+            /*background:url(./test.png);*/
+        }
+        /**linear-gradient(0deg, red, green) 0deg 为角度从上到下 。90deg为从左到右  */
+        .c2{
+            height:90px;
+             /*background: linear-gradient(to right, red, green);*/
+             /*background: linear-gradient(0deg, red, green);*/
+             /*background: linear-gradient(45deg, red 10%, green 10%, yellow 50%, blue 100%);*/
+            background: linear-gradient(135deg, transparent 0, transparent 49.5%, green 49.5%, green 50.5%, transparent 50.5%, transparent 100%);
+                linear-gradient(45deg, transparent 0, transparent 49.5%, red 49.5%, red 50.5%, transparent 50.5%, transparent 100%);
+            background-size: 80px 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="c1">
+
+    </div>
+    <div class="c2">
+
+    </div>
+</body>
+</html>

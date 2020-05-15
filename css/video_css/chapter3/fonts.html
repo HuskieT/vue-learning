@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字体</title>
+    <style>
+        /**
+         PingFang SC  苹果系统字体，字体从font-family第一个开始找，找不到就找下一个（每个字符都去判断）
+        **/
+        body{
+            /* font-family: "monaco"; */
+            /* font-family: "monaco", "PingFang SC"; */
+            font-family: "aaaaa", "monaco", "PingFang SC";
+        }
+        /**monospace 为字体簇 不需要加引号*/
+        .chinese{
+            font-family: "PingFang SC", "Microsoft Yahei", monospace;
+            /* font-family: "Microsoft Yahei", serif; */
+            /* font-family: "serif"; */
+        }
+        .weight{
+            font-weight: bold;
+            font-weight: bolder;
+            font-weight: lighter;
+            font-weight: normal;
+            font-weight: 100;
+        }
+        /*自定义字体  可以是网络远程字体（url为地址  远程字体必须允许 跨域）*/
+        @font-face {
+            font-family: "IF";
+            src: url("IndieFlower.ttf");
+        }
+        .custom-font{
+            font-family: IF;
+        }
+    </style>
+</head>
+<body class="body" id="body">
+    Hello world 你好，世界
+    <div class="chinese">你好</div>
+    <!-- <div class="weight">你好 Hello World</div> -->
+    <div class="custom-font">你好 Hello World</div>
+</body>
+</html>

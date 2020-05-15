@@ -1,0 +1,78 @@
+<!DOCTYPE html><html><head>
+<style>
+html,
+body {
+    min-height: 100vh;
+    background-color: #4158d0;
+    background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.card {
+    position: fixed;
+    height: 190px;
+    width: 550px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 5px;
+    animation: fadeIn 3s ease-in;
+}
+img {
+    height: 50px;
+    width: 50px;
+}
+section#container {
+    overflow: hidden;
+    width: 500px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    height: 140px;
+}
+section#container ul {
+    margin: 0;
+    padding: 0;
+}
+section#container ul li {
+    list-style: none;
+    height: 45px;
+    margin: 15px 0;
+    border-bottom: solid 1px #8C5954;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+</style>
+</head>
+<body>
+<script type="text/javascript" src="https://wow.techbrood.com/libs/jquery/jquery-2.1.1.min.js"></script><div class="card">
+    <section id="container">
+        <ul>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer enim velit, luctus eu hendrerit porttitor, dignissim at libero. </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer enim velit, luctus eu hendrerit porttitor, dignissim at libero. </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer enim velit, luctus eu hendrerit porttitor, dignissim at libero. </li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer enim velit, luctus eu hendrerit porttitor, dignissim at libero.</li>
+        </ul>
+</div>
+<script>
+function rotator() {
+
+    $('ul li:first-child').slideUp(1000, function() {
+        $(this).appendTo($('ul')).show();
+    });
+
+}
+
+setInterval(rotator, 3000);
+</script>
+
+</body>
+</html>

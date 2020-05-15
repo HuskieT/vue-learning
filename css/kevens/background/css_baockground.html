@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>background的使用</title>
+</head>
+<style>
+    body{
+
+    }
+    h1
+    {
+        background-color:#6495ed;
+    }
+    p
+    {
+        background-color:rgba(204,0,255,0.1);
+    }
+    div
+    {
+        background-color:#b0c4de;
+    }
+</style>
+<body>
+    <!--
+    background-color
+    background-image
+    background-repeat
+    background-attachment
+    background-position
+
+    -->
+
+
+    <h1>CSS background-color 实例!</h1>
+    <div>
+        该文本插入在 div 元素中。
+        <p>该段落有自己的背景颜色。</p>
+        我们仍然在同一个 div 中。
+    </div>
+    <div style="height:100px;background-image: url('https://avatar.csdnimg.cn/F/1/9/2_qq_31964019.jpg');background-repeat:no-repeat"> background-image不会重复 </div>
+    <div style="height:100px;background-image: url('https://avatar.csdnimg.cn/F/1/9/2_qq_31964019.jpg');background-repeat:repeat-x"> 只有水平位置会重复背景图像 </div>
+    <div style="height:300px;background-image: url('https://avatar.csdnimg.cn/F/1/9/2_qq_31964019.jpg');background-repeat:repeat-y">只有垂直位置会重复背景图像 </div>
+    <div style="height:300px;background-image: url('https://avatar.csdnimg.cn/F/1/9/2_qq_31964019.jpg');background-repeat:repeat">背景图像将向垂直和水平方向重复。这是默认 </div>
+    <div>=============================</div>
+    <div style="height:100px;background-image: url('https://avatar.csdnimg.cn/F/1/9/2_qq_31964019.jpg');background-repeat:inherit">指定background-repea属性设置应该从父元素继承 </div>
+</body>
+</html>

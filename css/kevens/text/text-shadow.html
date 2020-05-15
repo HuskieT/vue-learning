@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>text-shadow 属性应用于阴影文本</title>
+</head>
+<style>
+    h1 {text-shadow:2px 2px #FF0000;}
+    .dd{
+        font-size: 24px;
+        color:white;
+        text-shadow:3px 3px 3px #000000;
+    }
+    .ww{
+        text-shadow:0 0 3px #FF0000;
+    }
+</style>
+<body>
+<!---
+        text-shadow: h-shadow v-shadow blur color;
+        h-shadow	必需。水平阴影的位置。允许负值。
+        v-shadow	必需。垂直阴影的位置。允许负值。
+        blur	可选。模糊的距离。
+        color	可选。阴影的颜色
+-->
+    <div>
+        <h1>Text-shadow effect</h1>
+        ​<p class="dd">3333333</p>
+        ​<p class="ww">及更早版本的浏览器不支</p>
+        <p><b>注意:</b>IE 9及更早版本的浏览器不支持 text-shadow 属性.</p>
+    </div>
+</body>
+</html>

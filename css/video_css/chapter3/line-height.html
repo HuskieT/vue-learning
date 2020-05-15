@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>行高2</title>
+    <style>
+        /*
+         背景的大小是根据字体的大小渲染的，与line-height（行高）无关，inline 元素默认在 line中垂直居中
+         想使用垂直居中直接使用line-height就好了
+         vertical-align 设置居中方式
+         图片3px 间隙问题（解决方法1 使用vertical-align：buttom，方法二：display:block）
+         行高（基线 底线 顶线 line-height  inline-height ）
+        */
+        .cc1{
+            font-size:12px;
+        }
+        .cc2{
+            font-size:18px;
+        }
+        .cc3{
+            font-size:24px;
+        }
+    </style>
+</head>
+<body>
+    <div style="border:solid 1px red;background:navajowhite;line-height:80px;">
+        <span style="background:blue;color:#fff;font-size:20px;line-height:60px;">
+            居中xfg&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        </span>
+    </div>
+    <div class="c1">
+        <span class="cc1">第一段</span>
+        <span class="cc2">第二段</span>
+        <span class="cc3">第三段</span>
+    </div>
+    <div style="background:red">
+        <!--文字默认底线对齐-->
+        <span>文字</span>
+        <!--vertical-align: bottom 底部对齐 解决图片与文字不对齐问题  -->
+        <!--inline 默认基线对齐-->
+        <img src="test.png" style="vertical-align: bottom"/>
+    </div>
+    <div>
+        <div style="float:left">
+            <span>第一段</span>
+        </div>
+        <div style="float:left">
+            <span>第二段</span>
+        </div>
+    </div>
+</body>
+</html>

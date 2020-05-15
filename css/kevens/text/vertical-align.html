@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vertical-align 属性设置一个元素的垂直对齐方式</title>
+</head>
+<style>
+    img.text-top {vertical-align:text-top;}
+    img.text-bottom {vertical-align:text-bottom;}
+
+    img.bottom {vertical-align:bottom;}
+    img.top {vertical-align:top;}
+    img.sub {vertical-align:sub;}
+    img.super {vertical-align:super;}
+    img.middle {vertical-align:middle;}
+    img.line-height {vertical-align:-30px;}
+
+</style>
+<body>
+<!--
+该属性定义行内元素的基线相对于该元素所在行的基线的垂直对齐。允许指定负长度值和百分比值。这会使元素降低而不是升高。在表单元格中，这个属性会设置单元格框中的单元格内容的对齐方式
+
+vertical-align
+
+baseline	默认。元素放置在父元素的基线上。
+sub	垂直对齐文本的下标。
+super	垂直对齐文本的上标
+top	把元素的顶端与行中最高元素的顶端对齐
+text-top	把元素的顶端与父元素字体的顶端对齐
+middle	把此元素放置在父元素的中部。
+bottom	把元素的底端与行中最低的元素的顶端对齐。
+text-bottom	把元素的底端与父元素字体的底端对齐。
+length
+%	使用 "line-height" 属性的百分比值来排列此元素。允许使用负值。
+inherit	规定应该从父元素继承 vertical-align 属性的值。
+
+-->
+<p>一个<img src="https://www.runoob.com/try/demo_source/logo.png" alt="w3cschool" width="270" height="50" />默认对齐的图像。</p>
+<p>一个<img class="text-top" src="https://www.runoob.com/try/demo_source/logo.png" alt="w3cschool" width="270" height="50" />  text-top 对齐的图像。</p>
+<p>一个<img class="text-bottom" src="https://www.runoob.com/try/demo_source/logo.png" alt="w3cschool" width="270" height="50" /> text-bottom 对齐的图像。</p>
+
+
+
+<p>一个<img class="sub" src="https://www.runoob.com/try/demo_source/logo.png" alt="w3cschool" width="270" height="50" /> sub 对齐的图像。</p>
+<p>一个<img class="super" src="https://www.runoob.com/try/demo_source/logo.png" alt="w3cschool" width="270" height="50" /> super 对齐的图像。</p>
+<p>一个<img class="top" src="https://www.runoob.com/try/demo_source/logo.png" alt="w3cschool" width="270" height="50" /> top 对齐的图像。</p>
+<p>一个<img class="middle" src="https://www.runoob.com/try/demo_source/logo.png" alt="w3cschool" width="270" height="50" />middle 对齐的图像。</p>
+<p>一个<img class="bottom" src="https://www.runoob.com/try/demo_source/logo.png" alt="w3cschool" width="270" height="50" /> bottom 对齐的图像。</p>
+
+<p>一个<img class="line-height" src="https://www.runoob.com/try/demo_source/logo.png" alt="w3cschool" width="270" height="50" /> line-height 对齐的图像。</p>
+
+
+
+</body>
+</html>

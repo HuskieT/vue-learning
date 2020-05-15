@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>background-position  图片的定位</title>
+</head>
+<style>
+
+    .position1{
+        height: 200px;
+        background-image:url('https://avatar.csdnimg.cn/F/1/9/2_qq_31964019.jpg');
+        background-repeat: no-repeat;
+        background-attachment:fixed;
+        background-position: 90% 10%;
+    }
+    .position2{
+        height:500px;
+        background-image:url('https://imgconvert.csdnimg.cn/aHR0cHM6Ly9tbWJpei5xcGljLmNuL21tYml6X2dpZi9CblNORWFmaWNGQVlnVEdCWGcwWnZja1lIQTJpYUJPc3FPN3ZnVEdQNTNpY3h5TEtaS0M2eUFLdnM1czQ3OU1vWURWYk9icm5TdXhvWGJ6TklGTW1hWDgzZy82NDA?x-oss-process=image/format,png');
+        background-repeat: no-repeat;
+        background-attachment:fixed;
+        background-position: 300px 300px;
+        /*direction direction属性指定文本方向/书写方向   direction:rtl 右到左 ;direction:ltr 左到右*/
+        direction:rtl;
+        /*设置字符间距*/
+        letter-spacing :2px;
+        /*文本对齐方式 两端对齐  */
+        text-align: justify;
+    }
+
+   body{
+        background-image:url('https://avatar.csdnimg.cn/F/1/9/2_qq_31964019.jpg');
+        background-repeat: no-repeat;
+        background-attachment:fixed;
+        background-position: right top;
+    }
+</style>
+<body>
+<div class="position1">
+    <p><b>注意：</b>该属性工作在 Firefox 和 Opera, background-attachment 属性会被设置为 "fixed"。</p>
+</div>
+<div class="position2">
+   22222222222222
+</div>
+</body>
+</html>

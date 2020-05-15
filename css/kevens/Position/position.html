@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>position 属性规定元素的定位类型。</title>
+    <style>
+        .static {
+            position: static;
+            border: 3px solid #73AD21;
+        }
+        .pos_fixed
+        {
+            position:fixed;
+            top:30px;
+            right:5px;
+        }
+        h2.pos_left
+        {
+            position:relative;
+            left:-20px;
+        }
+
+        h2.pos_right
+        {
+            position:relative;
+            left:20px;
+        }
+        h2.pos_top
+        {
+            position:relative;
+            top:-50px;
+        }
+        h2.absolute
+        {
+            position:absolute;
+            left:100px;
+            top:150px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<!--
+fixed   元素的位置相对于浏览器窗口是固定位置。即使窗口是滚动的它也不会移动：
+relative 定位  相对定位元素的定位是相对其正常位置。(!!!relative 定位  相对定位元素的定位是相对其正常位置。)(相对定位元素经常被用来作为绝对定位元素的容器块)
+absolute 定位  绝对定位的元素的位置相对于最近的已定位父元素，如果元素没有已定位的父元素，那么它的位置相对于<html>
+sticky 定位   基于用户的滚动位置来定位。 粘性定位的元素是依赖于用户的滚动，在 position:relative 与 position:fixed 定位之间切换
+            （注意：Internet Explorer, Edge 15 及更早 IE 版本不支持 sticky 定位。 Safari 需要使用 -webkit- prefix）
+-->
+
+<div class="static">
+    <h2>position: static;</h2>
+    <p>使用 position: static; 定位的元素，无特殊定位，遵循正常的文档流对象:</p>
+    <p > 该元素使用了 position: static;</p>
+</div>
+
+<div class="p2" style="margin-top: 50px">
+    <p class="pos_fixed">Some more text</p>
+    <p><b>注意:</b> IE7 和 IE8 支持只有一个 !DOCTYPE 指定固定值.</p>
+    <p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p><p>Some text</p>
+
+</div>
+
+<div class="p3" style="margin-top: 50px">
+    <h2>这是位于正常位置的标题</h2>
+    <h2 class="pos_left">这个标题相对于其正常位置向左移动</h2>
+    <h2 class="pos_right">这个标题相对于其正常位置向右移动</h2>
+    <p>相对定位会按照元素的原始位置对该元素进行移动。</p>
+    <p>样式 "left:-20px" 从元素的原始左侧位置减去 20 像素。</p>
+    <p>样式 "left:20px" 向元素的原始左侧位置增加 20 像素。</p>
+</div>
+
+<div  class="p4" style="margin-top: 50px">
+    <h2>这是一个没有定位的标题</h2>
+    <h2 class="pos_top">这个标题是根据其正常位置向上移动</h2>
+    <p><b>注意:</b> 即使相对定位元素的内容是移动,预留空间的元素仍保存在正常流动。</p>
+</div>
+
+<div class="p5" style="margin-top: 50px">
+    <h2 class="absolute">这是一个绝对定位了的标题</h2>
+    <p>用绝对定位,一个元素可以放在页面上的任何位置。标题下面放置距离左边的页面100 px和距离页面的顶部150 px的元素。.</p>
+</div>
+</body>
+</html>

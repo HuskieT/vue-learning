@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>position: sticky; 基于用户的滚动位置来定位</title>
+    <style>
+        div.sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            padding: 5px;
+            background-color: #cae8ca;
+            border: 2px solid #4CAF50;
+        }
+        img
+        {
+            position:absolute;
+            left:0px;
+            top:0px;
+            z-index:-1;
+        }
+    </style>
+</head>
+<body>
+
+<div style="margin-top: 0%">
+    <h1>This is a heading</h1>
+    <img src="https://www.runoob.com/try/demo_source/logo.png" width="100" height="140" />
+    <p>因为图像元素设置了 z-index 属性值为 -1, 所以它会显示在文字之后。</p>
+</div>
+
+<div style="margin-top: 20%">
+    <p>尝试滚动页面。</p>
+    <p>注意: IE/Edge 15 及更早 IE 版本不支持 sticky 属性。</p>
+
+    <div class="sticky">我是粘性定位!</div>
+
+    <div style="padding-bottom:2000px">
+        <p>滚动我</p>
+        <p>来回滚动我</p>
+        <p>滚动我</p>
+        <p>来回滚动我</p>
+        <p>滚动我</p>
+        <p>来回滚动我</p>
+    </div>
+
+</div>
+
+</body>
+</html>
