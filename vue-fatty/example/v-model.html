@@ -18,11 +18,12 @@
        	.lazy：取代 imput 监听 change 事件。
 		.number：输入字符串转为数字。
 		.trim：输入去掉首尾空格。
+		参考：https://blog.csdn.net/weixin_41796631/article/details/82950861
        -->
        <p>v-model:<input type="text" v-model="message"></p>
        <p>v-model.lazy:<input type="text" v-model.lazy="message"></p>
-       <p>v-model.number:<input type="text" v-model.number="message"></p>
-       <p>v-model.trim:<input type="text" v-model.trim="message"></p>
+        <p>v-model.number:<input type="text" v-model.number="message"></p>
+        <p>v-model.trim:<input type="text" v-model.trim="message"></p>
        <hr>
        <h3>文本区域</h3>
        <textarea  cols="30" rows="10" v-model="message"></textarea>
@@ -56,7 +57,7 @@
        <p>{{sex}}</p>
        <hr>
     </div>
-	
+
     <script type="text/javascript">
         var app=new Vue({
             el:'#app',

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -60px;
+
+            /* 淡入 - 1秒内从 0% 到 100% 显示: */
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+<body style="text-align:center;">
+
+<!--
+HTML) 使用容器元素 (like <div>) 并添加 "tooltip" 类。在鼠标移动到 <div> 上时显示提示信息。
+
+提示文本放在内联元素上(如 <span>) 并使用class="tooltiptext"。
+
+CSS)tooltip 类使用 position:relative, 提示文本需要设置定位值 position:absolute。 注意: 接下来的实例会显示更多的定位效果。
+
+tooltiptext 类用于实际的提示文本。模式是隐藏的，在鼠标移动到元素显示 。设置了一些宽度、背景色、字体色等样式。
+
+CSS3 border-radius 属性用于为提示框添加圆角。
+
+:hover 选择器用于在鼠标移动到到指定元素 <div> 上时显示的提示。
+
+-->
+<h2>提示工具淡入效果</h2>
+<p>鼠标移动到以下元素，提示工具会再一秒内从 0% 到 100% 完全显示。</p>
+
+<div class="tooltip">鼠标移动到我这
+    <span class="tooltiptext">提示文本</span>
+</div>
+
+</body>
+</html>

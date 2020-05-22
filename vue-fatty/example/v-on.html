@@ -10,10 +10,10 @@
     <hr>
     <div id="app">
        本场比赛得分： {{count}}<br/>
-       <button v-on:click="jiafen">加分</button>
+       <button @click="jiafen">加分</button>
        <button @click="jianfen">减分</button>
-       <hr> 
-       <input type="text" v-on:keyup.enter="onEnter" v-model="secondCount">
+       <hr>
+       <input type="text" @keyup.enter="onEnter" v-model="secondCount">
     </div>
     <div>
     	 <img src="../assets/img/键盘键值.jpg" alt="键盘键值">
@@ -22,7 +22,7 @@
     	作者：lin1209120@163.com
     	时间：2018-08-30
     	描述：
-    	v-on:keyup.enter 按下enter键 
+    	v-on:keyup.enter 按下enter键
     -->
     <script type="text/javascript">
         var app=new Vue({
